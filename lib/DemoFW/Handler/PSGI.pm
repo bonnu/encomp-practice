@@ -6,7 +6,7 @@ use DemoFW;
 
 sub handler {
     my $env   = shift;
-    my $class = 'MyApp::Controller'; # router ¤ò»Å¹þ¤à¤Ê¤é¤³¤³¤À¤í¤¦¤«¡©
+    my $class = 'MyApp::Controller'; # router ã‚’ä»•è¾¼ã‚€ãªã‚‰ã“ã“ã ã‚ã†ã‹ï¼Ÿ
     my $obj   = DemoFW->operate(
         $class,
         {

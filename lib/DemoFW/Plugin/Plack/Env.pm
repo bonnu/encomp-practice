@@ -1,7 +1,6 @@
 package DemoFW::Plugin::Plack::Env;
 
 use Encomp::Plugin;
-
 use base qw/Class::Accessor::Fast/;
 
 __PACKAGE__->mk_accessors(qw/psgi_env/);

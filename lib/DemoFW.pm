@@ -16,7 +16,7 @@ hook_to '/main' => sub {
 
 no  Encomp;
 
-# handler ¸ş¤±¡£¤³¤Î¥á¥½¥Ã¥É¤Ï¥³¥ó¥È¥í¡¼¥é¤Ë assign ¤µ¤ì¤Ê¤¤¡£
+# handler å‘ã‘ã€‚ã“ã®ãƒ¡ã‚½ãƒƒãƒ‰ã¯ã‚³ãƒ³ãƒˆãƒ­ãƒ¼ãƒ©ã« assign ã•ã‚Œãªã„ã€‚
 sub finalize {
     my ($class, $obj) = @_;
     $obj->result;
