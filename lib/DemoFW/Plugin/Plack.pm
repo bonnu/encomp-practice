@@ -3,7 +3,6 @@ package DemoFW::Plugin::Plack;
 use Encomp::Plugin;
 
 plugins qw/
-    DemoFW::Plugin::Plack::Env
     DemoFW::Plugin::Plack::Request
     DemoFW::Plugin::Plack::Response
 /;

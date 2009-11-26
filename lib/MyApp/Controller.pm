@@ -2,17 +2,10 @@ package MyApp::Controller;
 
 use Encomp::Controller;
 
-plugins 'DemoFW::Plugin::Plack';
-
 sub dispatch {
     my $self = shift;
     $self->response->content_type('text/plain;');
-    $self->response->body('hello world');
-}
-
-sub result {
-    my $self = shift;
-    $self->response->finalize;
+    $self->response->body('hello world' . "\n" . $self->config->{foo});
 }
 
 no  Encomp::Controller;

@@ -1,12 +1,11 @@
 package DemoFW::Plugin::Plack::Request;
 
-use Encomp::Plugin;
-use base qw/Class::Accessor::Fast/;
+use Encomp::Plugin qw/+Accessor/;
 use Plack::Request;
 
-plugins 'DemoFW::Plugin::Plack::Env';
+plugins 'DemoFW::Plugin::PSGI';
 
-__PACKAGE__->mk_accessors(qw/request/);
+accessor 'request';
 
 hook_to '/initialize' => sub {
     my ($self, $context, $args) = @_;

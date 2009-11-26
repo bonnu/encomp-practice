@@ -1,9 +1,11 @@
-package DemoFW::Plugin::Plack::Env;
+package DemoFW::Plugin::PSGI;
 
-use Encomp::Plugin;
-use base qw/Class::Accessor::Fast/;
+use Encomp::Plugin qw/+Accessor/;
 
-__PACKAGE__->mk_accessors(qw/psgi_env/);
+accessors qw/
+    psgi_env
+    psgi_response
+/;
 
 hook_to '/initialize' => sub {
     my ($self, $context, $args) = @_;

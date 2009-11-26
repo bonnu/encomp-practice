@@ -1,12 +1,14 @@
 package DemoFW::Plugin::Plack::Response;
 
-use Encomp::Plugin;
-use base qw/Class::Accessor::Fast/;
+use Encomp::Plugin qw/+Accessor/;
 use Plack::Response;
 
-plugins 'DemoFW::Plugin::Plack::Request';
+plugins qw/
+    DemoFW::Plugin::PSGI
+    DemoFW::Plugin::Plack::Request
+/;
 
-__PACKAGE__->mk_accessors qw/response/;
+accessor 'response';
 
 hook_to '/initialize' => sub {
     my ($self, $context, $args) = @_;
@@ -16,6 +18,11 @@ hook_to '/initialize' => sub {
             : $self->request->new_response(200)
     );
     return 1;
+};
+
+hook_to '/finalize' => sub {
+    my $self = shift;
+    $self->psgi_response($self->response->finalize);
 };
 
 no  Encomp::Plugin;
