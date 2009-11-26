@@ -15,10 +15,13 @@ sub handler {
         my $env = shift;
         my $app = 'MyApp::Controller';
         DemoFW->operate(
-            $app,
+            [
+                $app,
+                qw/DemoFW::Plugin::PSGI/,
+            ],
             {
-                config   => $config,
-                psgi_env => $env,
+                config     => $config,
+                psgi_env   => $env,
             },
         )->psgi_response;
     };
