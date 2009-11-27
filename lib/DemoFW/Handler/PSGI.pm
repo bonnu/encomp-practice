@@ -7,9 +7,11 @@ use File::Spec;
 
 sub handler {
     my ($class, %args) = @_;
-    my $file   = $args{file};
-    my @paths  = File::Spec->splitdir($file);
-    my $base   = File::Spec->catdir(splice @paths, 0, $#paths);
+    my $file = $args{file} || (caller 0)[1];
+    my $base = $args{base} || do {
+        my @paths = File::Spec->splitdir($file);
+        File::Spec->catdir(splice @paths, 0, $#paths);
+    };
     my $config = File::Spec->rel2abs($args{config}, $base);
     sub {
         my $env = shift;
@@ -20,8 +22,8 @@ sub handler {
                 qw/DemoFW::Plugin::PSGI/,
             ],
             {
-                config     => $config,
-                psgi_env   => $env,
+                config   => $config,
+                psgi_env => $env,
             },
         )->psgi_response;
     };

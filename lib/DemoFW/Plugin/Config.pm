@@ -1,7 +1,7 @@
 package DemoFW::Plugin::Config;
 
 use Encomp::Plugin qw/+ClassAccessor/;
-use Storable qw/dclone/;
+use Storable ();
 
 class_accessor 'config';
 
@@ -15,7 +15,7 @@ hook_to '/initialize' => sub {
             : {}
         );
     }
-    $self->config(dclone $class->config);
+    $self->config(Storable::dclone $class->config);
     return 1;
 };
 
