@@ -7,13 +7,27 @@ plugins qw/
     DemoFW::Plugin::Plack
 /;
 
-processes qw/
-    initialize
-    main
-    finalize
-/;
+processes
+    initialize =>
+    main       => [
+        before      => [
+            authentication => # login
+            limitation     => # access control / access block
+        ] =>
+        dispatch    => [      # mode / conditions
+            correct        => # mode / templates / assign
+        ] =>
+        after       => [
+            render         => # template->output
+            filter         => # encode / etc ...
+            output         => # body
+            effect         => # foot print
+        ] =>
+    ],
+    finalize   =>
+;
 
-hook_to '/main' => sub { shift->dispatch; 1 };
+hook_to '/main/dispatch/correct' => sub { shift->dispatch };
 
 no  Encomp;
 
