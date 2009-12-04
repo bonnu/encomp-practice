@@ -23,7 +23,7 @@ processes
             output         => # body
             effect         => # foot print
         ] =>
-    ],
+    ] =>
     finalize   =>
 ;
 
