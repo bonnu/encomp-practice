@@ -16,7 +16,7 @@ sub handler {
     sub {
         my $env = shift;
         my $app = 'MyApp::Controller';
-        DemoFW->operate(
+        my $obj = DemoFW->operate(
             [
                 $app,
                 qw/DemoFW::Plugin::PSGI/,
@@ -24,8 +24,10 @@ sub handler {
             {
                 config   => $config,
                 psgi_env => $env,
+                root_dir => $base,
             },
-        )->psgi_response;
+        );
+        $obj->psgi_response;
     };
 }
 

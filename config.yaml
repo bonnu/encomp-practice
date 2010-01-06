@@ -1,1 +1,11 @@
-foo: bar
+common:
+
+  foo: bar
+
+plugin:
+    
+  DemoFW::Plugin::Template:
+    template_dir: templates
+
+  DemoFW::Plugin::Log:
+    log_level: 1

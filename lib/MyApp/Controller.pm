@@ -1,8 +1,7 @@
 package MyApp::Controller;
 
 use Encomp::Controller;
-use Class::Inspector;
-use Data::Dumper ();
+use Data::Dump qw/pp/;
 
 plugins qw/MyApp::Plugin::HelloWorld/;
 
@@ -13,16 +12,15 @@ sub dispatch {
     $self->message('Hello Japan !');
        $message .= $self->message . "\n";
     $self->response->body($message);
-=pod
     $self->response->body(
-        'hello world'                                                                   . "\n" .
-        'request->param("foo") : ' . $self->request->param('foo')                       . "\n" .
-        'config->{foo}         : ' . $self->config->{foo}                               . "\n" .
-        'ref $self             : ' . ref($self)                                         . "\n" .
-        'dump(all_complex)     : ' . Data::Dumper::Dumper(Encomp::Complex::all_complex) . "\n" .
+        'hello world'                              . "\n" .
+        'param->{foo}  : ' . $self->param->{foo}   . "\n" .
+        'config->{foo} : ' . $self->config->{foo}  . "\n" .
+        'dump(config)  : ' . pp($self->config)     . "\n" .
+        'ref $self     : ' . ref($self)            . "\n" .
+        'dump(complex) : ' . pp($self->complex)    . "\n" .
         q//,
     );
-=cut
 }
 
 no  Encomp::Controller;

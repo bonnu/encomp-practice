@@ -3,7 +3,10 @@ package DemoFW::Plugin::Plack::Request;
 use Encomp::Plugin qw/+Accessor/;
 use Plack::Request;
 
-plugins 'DemoFW::Plugin::PSGI';
+plugins qw/
+    DemoFW::Plugin::Param
+    DemoFW::Plugin::PSGI
+/;
 
 accessor 'request';
 
@@ -14,6 +17,7 @@ hook_to '/initialize' => sub {
             ? delete $args->{plack_request}
             : Plack::Request->new($self->psgi_env)
     );
+    $self->param($self->request->parameters);
     return 1;
 };
 

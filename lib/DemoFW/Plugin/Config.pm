@@ -1,9 +1,11 @@
 package DemoFW::Plugin::Config;
 
 use Encomp::Plugin qw/+ClassAccessor/;
+use File::Spec;
 use Storable ();
 
 class_accessor 'config';
+class_accessor 'root_dir';
 
 hook_to '/initialize' => sub {
     my ($self, $context, $args) = @_;
@@ -16,7 +18,9 @@ hook_to '/initialize' => sub {
         );
     }
     $self->config(Storable::dclone $class->config);
-    return 1;
+    unless ($class->root_dir) {
+        $class->root_dir(File::Spec->rel2abs($args->{root_dir} || q{}));
+    }
 };
 
 no  Encomp::Plugin;
