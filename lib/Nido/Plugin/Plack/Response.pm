@@ -1,11 +1,11 @@
-package DemoFW::Plugin::Plack::Response;
+package Nido::Plugin::Plack::Response;
 
 use Encomp::Plugin qw/+Accessor/;
 use Plack::Response;
 
 plugins qw/
-    DemoFW::Plugin::PSGI
-    DemoFW::Plugin::Plack::Request
+    Nido::Plugin::PSGI
+    Nido::Plugin::Plack::Request
 /;
 
 accessor 'response';

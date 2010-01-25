@@ -1,8 +1,8 @@
-package DemoFW::Handler::PSGI;
+package Nido::Handler::PSGI;
 
 use strict;
 use warnings;
-use DemoFW;
+use Nido;
 use File::Spec;
 
 sub handler {
@@ -16,10 +16,10 @@ sub handler {
     sub {
         my $env = shift;
         my $app = 'MyApp::Controller';
-        my $obj = DemoFW->operate(
+        my $obj = Nido->operate(
             [
                 $app,
-                qw/DemoFW::Plugin::PSGI/,
+                qw/Nido::Plugin::PSGI/,
             ],
             {
                 config   => $config,

@@ -1,4 +1,4 @@
-package DemoFW::Plugin::Config;
+package Nido::Plugin::Config;
 
 use Encomp::Plugin qw/+ClassAccessor/;
 use File::Spec;

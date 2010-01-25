@@ -1,10 +1,10 @@
-package DemoFW;
+package Nido;
 
 use Encomp;
 
 plugins qw/
-    DemoFW::Plugin::Config
-    DemoFW::Plugin::Plack
+    Nido::Plugin::Config
+    Nido::Plugin::Plack
 /;
 
 processes

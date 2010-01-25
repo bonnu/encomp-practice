@@ -1,4 +1,4 @@
-package DemoFW::Plugin::PSGI;
+package Nido::Plugin::PSGI;
 
 use Encomp::Plugin qw/+Accessor/;
 

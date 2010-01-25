@@ -2,10 +2,10 @@ common:
 
   foo: bar
 
-plugin:
+plugins:
     
-  DemoFW::Plugin::Template:
+  Nido::Plugin::Template:
     template_dir: templates
 
-  DemoFW::Plugin::Log:
+  Nido::Plugin::Log:
     log_level: 1
